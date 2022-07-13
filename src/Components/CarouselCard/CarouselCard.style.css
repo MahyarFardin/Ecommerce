@@ -1,0 +1,8 @@
+.carousel-card{
+    width: 700px;
+    height: 300px;
+    object-fit:cover;
+    height: auto;
+    position: absolute;
+    transition: all 0.5s;
+}
