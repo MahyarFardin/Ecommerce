@@ -9,11 +9,11 @@ export default function CategoriesPage() {
     const [categories, setCategories] = useState([])
 
     function handleMouseOver(event) {
-        event.target.style.backgroundColor = "#F9E4D4"
+        event.target.style.backgroundColor = "white"
     }
 
     function handleMouseLeave(event) {
-        event.target.style.backgroundColor = "white"
+        event.target.style.backgroundColor = "#fcf3ea"
     }
 
     useEffect(() => {
@@ -23,7 +23,7 @@ export default function CategoriesPage() {
     }, [])
 
     return (
-        <div>
+        <div className='first-page'>
             <Carousel />
             <div className='category-container'>
                 {categories.map(category => <div onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave} key={Math.random()} className="category">{category}</div>)}
