@@ -3,6 +3,7 @@ import "./CarouselCard.style.css"
 
 function CarouselCard(props) {
     return (
+        
         <div>
             <img className='carousel-card' src={props.image} alt="carousel image" />
             <div className='text'>
