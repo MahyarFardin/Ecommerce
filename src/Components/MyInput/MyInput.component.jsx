@@ -8,7 +8,7 @@ function MyInput(props) {
             type={props.type}
             onChange={props.onChange}
             placeholder={props.placeholder}
-            // value={props.value.temp}
+            value={props.value.temp}
         />
     );
 }

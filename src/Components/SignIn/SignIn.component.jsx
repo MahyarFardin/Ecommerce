@@ -1,55 +1,93 @@
 import React, { useState } from 'react';
+import MyButton from '../MyButton/MyButton.component';
 import MyInput from '../MyInput/MyInput.component';
-import "./Signin.style.css";
+import "./SignIn.style.css"
+
 
 function SignIn() {
-    const [formInput, setFormInput] = useState({
+    const [profile, setProfile] = useState({
+        firstName: "",
+        lastName: "",
         email: "",
         password: "",
-        confirmPass: ""
+        confirmPassword: "",
+        address: ""
     })
 
     function handleChange(params) {
         const value = params.target.value
         const name = params.target.className.split(" ")[1];
-        setFormInput(prev => ({
+        setProfile(prev => ({
             ...prev,
             [name]: value
         }))
     }
 
+    function handleSubmit(params) {
+        params.preventDefault()
+        console.log(params);
+    }
+
     return (
-        <form className='signin-form'>
-            <MyInput {
-                ...{
+        <form onSubmit={handleSubmit} className='sign-in-log'>
+            <MyInput
+                {...{
+                    name: "firstName",
+                    type: "text",
+                    onChange: handleChange,
+                    placeholder: "First Name",
+                    value: { ...profile.firstName }
+                }} />
+            <MyInput
+                {...{
+                    name: "lastName",
+                    type: "text",
+                    onChange: handleChange,
+                    placeholder: "Last Name",
+                    value: { ...profile.lastName }
+                }} />
+            <MyInput
+                {...{
                     name: "email",
-                    type: "email",
+                    type: "text",
                     onChange: handleChange,
                     placeholder: "Email",
-                    value: { ...(formInput.email) }
-                }
-            }
-            />
-            <MyInput {
-                ...{
+                    value: { ...profile.email }
+                }} />
+            <MyInput
+                {...{
+                    name: "address",
+                    type: "text",
+                    onChange: handleChange,
+                    placeholder: "Address",
+                    value: { ...profile.address }
+                }} />
+            <MyInput
+                {...{
                     name: "password",
                     type: "password",
                     onChange: handleChange,
                     placeholder: "Password",
-                    value: { ...(formInput.password) }
-                }
-            }
-            />
-            <MyInput {
-                ...{
-                    name: "confirmPass",
+                    value: { ...profile.password }
+                }} />
+            <MyInput
+                {...{
+                    name: "confirmPassword",
                     type: "text",
                     onChange: handleChange,
                     placeholder: "Confirm Password",
-                    value: { ...(formInput.confirmPass) }
-                }
-            }
-            />
+                    value: { ...profile.confirmPassword }
+                }} />
+
+            <div className="button-container">
+                <MyButton {...{
+                    name: "Sign in"
+                }} />
+
+                <MyButton {...{
+                    name: "Sign in with Google"
+                }} />
+            </div>
         </form>
     );
 }

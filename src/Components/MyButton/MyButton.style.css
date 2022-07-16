@@ -1,0 +1,16 @@
+.my-button{
+    width: 250px;
+    height: 60px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #FCF3EA;
+    color: #AFA193;
+    border: 2px #AFA193 solid;
+    display: inline-block;
+}
+.my-button:hover{
+    background-color: #AFA193;
+    color: #FCF3EA;
+    border: 2px #AFA193 solid; 
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 
 import Carousel from '../../Components/Carousel/Carousel.component';
 
@@ -24,10 +24,12 @@ export default function CategoriesPage() {
 
     return (
         <div className='first-page'>
-            <Carousel />
-            <div className='category-container'>
-                {categories.map(category => <div onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave} key={Math.random()} className="category">{category}</div>)}
-            </div>
-        </div>
+            <Suspense fallback={<div>Loading...</div>}>
+                <Carousel />
+                <div className='category-container'>
+                    {categories.map(category => <div onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave} key={Math.random()} className="category">{category}</div>)}
+                </div>
+            </Suspense>
+        </div >
     )
 }
