@@ -84,9 +84,6 @@ function SignIn() {
                     name: "Sign in"
                 }} />
 
-                <MyButton {...{
-                    name: "Sign in with Google"
-                }} />
             </div>
         </form>
     );

@@ -17,10 +17,11 @@ function NavigationBar() {
                 <li>
                     <MyLink path="" text="Home" />
                 </li>
-                <li>Shop</li>
+                <li>
+                    <MyLink path="shop" text="Shop" />
+                </li>
                 <li>
                     <MyLink path="auth" text="Sign In" />
-
                 </li>
             </ul>
         </nav>
