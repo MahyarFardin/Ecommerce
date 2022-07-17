@@ -1,7 +1,7 @@
 .main-shop{
-    margin: auto 50px;
+    margin: 50px 50px;
     display: grid;
-    gap: 20px;
-    grid-template-columns: 300px 300px 300px 300px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 15px;
     justify-content: center;
 }
