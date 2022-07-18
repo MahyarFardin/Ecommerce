@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import AddToCart from '../../Components/AddToCart/AddToCart.component';
 import "./ProductPage.style.css"
 
 function ProductPage() {
@@ -21,6 +22,7 @@ function ProductPage() {
             <div className="description">
                 <h1>{item.title}</h1>
                 <p>{item.description}</p>
+                <AddToCart price={item.price} />
             </div>
         </div>
     );
