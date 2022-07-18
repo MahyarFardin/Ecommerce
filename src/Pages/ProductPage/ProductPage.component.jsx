@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import "./ProductPage.style.css"
 
 function ProductPage() {
-    const params= useParams();
+    const params = useParams();
 
-    const [item, setItem] = React.useState([]);
-    React.useEffect(() => {
-        fetch('https://fakestoreapi.com/products/'+params.id)
+    const [item, setItem] = useState([])
+
+    useEffect(() => {
+        fetch('https://fakestoreapi.com/products/' + params.id)
             .then(res => res.json())
             .then(json => setItem(json))
-    },[])
+    }, [])
 
-    console.log(item);
     return (
         <div className='item-container'>
             <div className="item-image">

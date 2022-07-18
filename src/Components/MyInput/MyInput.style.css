@@ -1,13 +1,13 @@
-.my-input{
+.my-input {
     background-color: #fcf3ea;
     border: none;
-    border-bottom:1px #cab299 solid;
-    width: 100%;
+    border-bottom: 1px #cab299 solid;
+    width: 90%;
     height: 40px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: auto;
 }
-.my-input:focus{
+
+.my-input:focus {
     outline: none;
     border-bottom: 1px #5F5449 solid;
 }
