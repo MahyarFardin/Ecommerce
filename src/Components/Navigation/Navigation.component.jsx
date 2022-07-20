@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import MyLink from '../NavItems/NavItems.component';
+import ProfileBadge from '../ProfileBadge/ProfileBadge.component';
 import "./Navigation.style.css"
 
 function NavigationBar() {
+    const [signedIn, setSignedIn] = useState(true)
+
     return (
         <nav>
             <Link className='logo' to="/">
@@ -21,7 +24,11 @@ function NavigationBar() {
                     <MyLink path="shop" text="Shop" />
                 </li>
                 <li>
-                    <MyLink path="auth" text="Sign In" />
+                    {signedIn === true ?
+                        <Link to="cart">
+                            <ProfileBadge />
+                        </Link> :
+                        <MyLink path="auth" text="Sign In" />}
                 </li>
             </ul>
         </nav>

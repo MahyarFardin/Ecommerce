@@ -5,7 +5,6 @@ import "./ProductPage.style.css"
 
 function ProductPage() {
     const params = useParams();
-
     const [item, setItem] = useState([])
 
     useEffect(() => {
