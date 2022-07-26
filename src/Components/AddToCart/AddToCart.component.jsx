@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import AR from '../AdderRemover/AR.component';
 import MyButton from "../MyButton/MyButton.component"
 import "./AddToCart.style.css"
 function AddToCart({ price }) {
-    const [number, setNumber] = useState(0);
+    const number=useRef()
 
     const handleSubmit = () => {
-        console.log(number);
+        console.log(number.current.innerText);
     }
     return (
         <div className="container-a-c">
@@ -19,13 +19,10 @@ function AddToCart({ price }) {
             </div>
             <hr />
             <div className="cart-part">
-                <AR {...{
-                    number: number,
-                    setter: { setNumber }
-                }} />
+                <AR ref={number}/>
                 <MyButton {...{
                     name: "Add to cart",
-                    onsubmit: handleSubmit
+                    onClick: handleSubmit
                 }} />
             </div>
         </div>

@@ -24,11 +24,7 @@ function NavigationBar() {
                     <MyLink path="shop" text="Shop" />
                 </li>
                 <li>
-                    {signedIn === true ?
-                        <Link to="cart">
-                            <ProfileBadge />
-                        </Link> :
-                        <MyLink path="auth" text="Sign In" />}
+                        <MyLink path="auth" text="Sign In" />
                 </li>
             </ul>
         </nav>
