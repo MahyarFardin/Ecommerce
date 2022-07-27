@@ -26,8 +26,28 @@ function SignIn() {
     function handleSubmit(params) {
         params.preventDefault()
         console.log(params);
+        signUp()
     }
 
+    function signUp(){
+        
+        let newUser = {
+            firstName:profile.firstName,
+            lastName:profile.lastName,
+            email:profile.email,
+            pass:profile.password,
+            address:profile.address
+        }
+        // console.log(newUser);
+        fetch('http://localhost:3002/api/user', {
+            method:'POST' , 
+            headers:{"Content-type":'application/json'},
+            body:JSON.stringify(newUser)
+        })
+        .then(i=>{
+            console.log(i);
+        })
+    }
     return (
         <form onSubmit={handleSubmit} className='sign-in-log'>
             <MyInput
@@ -73,7 +93,7 @@ function SignIn() {
             <MyInput
                 {...{
                     name: "confirmPassword",
-                    type: "text",
+                    type: "password",
                     onChange: handleChange,
                     placeholder: "Confirm Password",
                     value: { ...profile.confirmPassword }

@@ -10,7 +10,7 @@ function ProductPage() {
     useEffect(() => {
         fetch('https://fakestoreapi.com/products/' + params.id)
             .then(res => res.json())
-            .then(json => setItem(json))
+            .then(json =>setItem(json))
     }, [])
 
     return (
@@ -21,7 +21,7 @@ function ProductPage() {
             <div className="description">
                 <h1>{item.title}</h1>
                 <p>{item.description}</p>
-                <AddToCart price={item.price} />
+                <AddToCart price={item.price} id={params.id}/>
             </div>
         </div>
     );

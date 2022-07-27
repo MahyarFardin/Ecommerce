@@ -21,6 +21,26 @@ function LogIn() {
     function handleSubmit(params){
         params.preventDefault();
         console.log(params);
+        logIn()
+    }
+    async function logIn(){
+        await fetch('http://localhost:3002/api/user')
+        .then(i=>{
+            console.log(i);
+            return i.json()
+        }).then(users=>{
+            users.forEach(user=>{
+                if (user.email == formInput.email && user.pass == formInput.password) {
+                    // localStorage.setItem('loginUser' , JSON.stringify(user))
+                    let time  = new Date()
+                    time.setTime(time.getTime() +  2*24*60*60*1000)
+                    console.log(time);
+                    document.cookie = `loginUser = ${JSON.stringify(user)} ; path= / ; expires =${time} ` 
+                    console.log(user);
+                    return 
+                }
+            })
+        })
     }
 
     return (

@@ -1,7 +1,7 @@
 import React, { forwardRef, useReducer, useState } from 'react';
 import "./AR.style.css"
 
-const initialState = { count: 0 }
+const initialState = { count: 1 }
 
 function reducer(state, action) {
     switch (action.type) {
