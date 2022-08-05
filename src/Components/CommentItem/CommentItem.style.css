@@ -1,0 +1,9 @@
+.comment-item{
+    padding: 1.5em;
+    background-color: white;
+    border-radius: 20px;
+    margin: 30px;
+}
+.comment-item p{
+    margin: 1em
+}

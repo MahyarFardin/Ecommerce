@@ -1,0 +1,11 @@
+.single-service {
+    text-align: center;
+    border-radius: 10px;
+    width: 100%;
+    height: 100px;
+}
+.single-service:hover {
+    background-color: #5f5449;
+    color: #fcf3ea;
+    transition: .5s;
+}

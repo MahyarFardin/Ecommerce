@@ -1,0 +1,15 @@
+.main-shop{
+    margin: 50px 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 15px;
+    justify-content: center;
+}
+.search{
+    margin: 30px auto;
+}
+.main-container-shop{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

@@ -1,0 +1,26 @@
+.dummy-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 25px;
+    height: 350px;
+    width: 250px;
+    background-color: white;
+    border-radius: 10px;
+}
+.dummy-card:hover{
+    background-color: black;
+    color: white;
+    transform: scale(1.05);
+    transition: 1s;
+}
+.pm-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top: 4em;
+}
+.container-pm-main{
+    padding-left: 3em;
+    padding-right: 3em;
+}

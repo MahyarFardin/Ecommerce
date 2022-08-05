@@ -1,0 +1,9 @@
+.auth-page{
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-bottom: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:50px;
+    justify-content: center;
+}

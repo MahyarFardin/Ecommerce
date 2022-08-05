@@ -1,0 +1,40 @@
+.card-cart {
+  height: 300px;
+  width: 90%;
+  border-radius: 20px;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  margin: 20px auto;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.cart-image {
+  width: 250px;
+  height: 250px;
+  margin-left: 50px;
+}
+
+.cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cont:hover .item-button {
+  display: block;
+}
+
+.item-button {
+  display: none;
+  background-color: black;
+  color: white;
+  border: none;
+  font-weight: bolder;
+  border-radius: 30px;
+  position: relative;
+  width: 150px;
+  z-index: 100;
+  padding: 1em;
+}/*# sourceMappingURL=CartItem.style.css.map */

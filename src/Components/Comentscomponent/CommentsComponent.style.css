@@ -1,0 +1,10 @@
+.comment-component {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.com-comp {
+    padding: 5em;
+}
+.com-comp h3{
+    margin-bottom: 5em;
+}

@@ -1,0 +1,21 @@
+.footer {
+    padding: 1em;
+    margin-top: 10em;
+    background-color: white;
+    opacity: 50%;
+}
+.services {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin: 5em;
+}
+.sm-tags {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: auto 5em;
+}
+.social {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
