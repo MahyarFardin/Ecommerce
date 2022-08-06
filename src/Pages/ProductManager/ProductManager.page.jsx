@@ -43,7 +43,7 @@ function ProductManager({}) {
                     </div>
                 </Link>
                 {products.map((item) => (
-                    <ItemCard key={item._id} {...{ item }} />
+                    <ItemCard key={item._id} kind={"pm"} {...{ item }} />
                 ))}
             </div>
         </div>

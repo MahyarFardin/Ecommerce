@@ -79,10 +79,10 @@ function MainPage() {
                       idx < 12 * state.count &&
                       idx > 12 * (state.count - 1) - 1
                   )
-                      return <ItemCard key={item.id} {...{ item }} />;
+                      return <ItemCard kind={"s"} key={item.id} {...{ item }} />;
               })
             : filterhandler.map((item) => (
-                  <ItemCard key={item.id} {...{ item }} />
+                  <ItemCard kind={"s"} key={item.id} {...{ item }} />
               ));
 
     return (
