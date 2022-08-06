@@ -1,11 +1,25 @@
-import React, { useEffect, useState } from "react";
-import ItemCard from "../../Components/ItemCard/ItemCard.component";
+import React, { useEffect, useReducer, useState } from "react";
+import {
+    BsFillArrowLeftSquareFill,
+    BsFillArrowRightSquareFill,
+} from "react-icons/bs";
 import MyInput from "../../Components/MyInput/MyInput.component";
+import ItemCard from "../../Components/ItemCard/ItemCard.component";
 import "./MainShopPage.style.css";
 
 function MainPage() {
     const [container, setContainer] = useState([]);
     const [search, setSearch] = useState("");
+    const [state, dispach] = useReducer(reducer, { count: 1 });
+
+    function reducer(state, action) {
+        switch (action.type) {
+            case "left":
+                return { count: state.count - 1 };
+            case "right":
+                return { count: state.count + 1 };
+        }
+    }
 
     useEffect(() => {
         fetch("http://localhost:3002/api/product")
@@ -60,9 +74,13 @@ function MainPage() {
 
     const cards =
         search === ""
-            ? container.map((item) => (
-                  <ItemCard key={item.id} {...{ item }} />
-              ))
+            ? container.map((item, idx) => {
+                  if (
+                      idx < 12 * state.count &&
+                      idx > 12 * (state.count - 1) - 1
+                  )
+                      return <ItemCard key={item.id} {...{ item }} />;
+              })
             : filterhandler.map((item) => (
                   <ItemCard key={item.id} {...{ item }} />
               ));
@@ -79,6 +97,15 @@ function MainPage() {
                 }}
             />
             <div className="main-shop">{cards}</div>
+            <div className="pages">
+                <BsFillArrowLeftSquareFill
+                    onClick={() => dispach({ type: "left" })}
+                />
+                <span className="page-number">{state.count}</span>
+                <BsFillArrowRightSquareFill
+                    onClick={() => dispach({ type: "right" })}
+                />
+            </div>
         </div>
     );
 }

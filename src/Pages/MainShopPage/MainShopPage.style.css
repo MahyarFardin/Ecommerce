@@ -13,3 +13,13 @@
     flex-direction: column;
     justify-content: center;
 }
+.pages{
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    justify-content: space-between;
+    margin: auto 21em;
+}
+.page-number{
+    margin: 10px;
+}
