@@ -9,7 +9,7 @@ function NavigationBar() {
     const { signCheck, setSignCheck } = useContext(userSignInCheck);
 
     useEffect(() => {
-        if (document.cookie != undefined) {
+        if (document.cookie) {
             setSignCheck(true);
         }
     }, [signCheck]);
@@ -38,7 +38,7 @@ function NavigationBar() {
                 </li>
                 <li>
                     {signCheck === false ? (
-                        <MyLink path="auth" text="Sign In" />
+                        <MyLink path="auth" text="Signin/Login" />
                     ) : (
                         <Link to={"/profile"}>
                             <ProfileBadge />

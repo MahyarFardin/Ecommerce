@@ -1,16 +1,20 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
+import { RiDeleteBin6Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import "./CartItem.style.css";
 
 function CartItem(props) {
     const [item, setItem] = useState({});
-    const refAr = useRef();
 
     useEffect(() => {
         fetch(`http://localhost:3002/api/product/${props.productId}`)
             .then((rawData) => rawData.json())
             .then((json) => setItem(json));
-    }, []);
+    }, [item]);
+
+    const handleRemove = () => {
+        //fetch();
+    };
 
     return (
         <div className="card-cart">
@@ -30,6 +34,7 @@ function CartItem(props) {
                 <h3>Quantity: {props.quantity}</h3>
                 <hr />
                 <h3>Total of {props.quantity * item.price} $</h3>
+                <RiDeleteBin6Line className="bin" onClick={handleRemove} size={35} />
             </div>
         </div>
     );

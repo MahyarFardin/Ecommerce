@@ -36,4 +36,9 @@
 }
 .cont:hover .item-button {
   display: block;
+}
+
+.bin:hover {
+  color: red;
+  cursor: pointer;
 }/*# sourceMappingURL=CartItem.style.css.map */
