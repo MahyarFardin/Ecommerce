@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect } from "react";
+import { userSignInCheck } from "../../App";
 import { Link } from "react-router-dom";
 import MyLink from "../NavItems/NavItems.component";
 import ProfileBadge from "../ProfileBadge/ProfileBadge.component";
 import "./Navigation.style.css";
 
 function NavigationBar() {
-    const [signedIn, setSignedIn] = useState(false);
+    const { signCheck, setSignCheck } = useContext(userSignInCheck);
+
+    useEffect(() => {
+        if (document.cookie != undefined) {
+            setSignCheck(true);
+        }
+    }, [signCheck]);
+
     return (
         <nav>
             <Link className="logo" to="/">
@@ -29,7 +37,7 @@ function NavigationBar() {
                     <MyLink path="shop" text="Shop" />
                 </li>
                 <li>
-                    {signedIn === true ? (
+                    {signCheck === false ? (
                         <MyLink path="auth" text="Sign In" />
                     ) : (
                         <Link to={"/profile"}>

@@ -1,4 +1,5 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { userSignInCheck } from "../../App";
 import { useNavigate } from "react-router-dom";
 import Cart from "../../Components/Cart/Cart.page";
 import MyButton from "../../Components/MyButton/MyButton.component";
@@ -6,6 +7,7 @@ import { Link } from "react-router-dom";
 
 function Profile() {
     const navigate = useNavigate();
+    const { setSignCheck } = useContext(userSignInCheck);
     const [user, setUser] = useState({});
 
     useEffect(() => {
@@ -19,7 +21,6 @@ function Profile() {
                 setUser(user);
             });
     }, []);
-    console.log(user);
 
     const handleClick = () => {
         let time = new Date();
@@ -28,6 +29,7 @@ function Profile() {
             user
         )} ; path= / ; expires =${time} `;
 
+        setSignCheck(false);
         navigate("/shop");
     };
 

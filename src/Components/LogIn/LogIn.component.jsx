@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { userSignInCheck } from "../../App";
 import { useNavigate } from "react-router-dom";
 import MyInput from "../MyInput/MyInput.component";
 import MyButton from "../MyButton/MyButton.component";
 import "./LogIn.style.css";
 
 function LogIn() {
-    const navigate=useNavigate()
+    const { setSignCheck } = useContext(userSignInCheck);
+
+    const navigate = useNavigate();
     const [formInput, setFormInput] = useState({
         email: "",
         password: "",
@@ -23,6 +26,8 @@ function LogIn() {
     function handleSubmit(params) {
         params.preventDefault();
         login();
+        setSignCheck(true);
+        navigate("/shop");
     }
 
     async function login() {
@@ -33,28 +38,29 @@ function LogIn() {
                     if (
                         user.email == formInput.email &&
                         user.pass == formInput.password
-                        ) {
+                    ) {
                         await fetch(
                             `http://localhost:3002/api/user/${user._id}`
                         )
                             .then((i) => i.json())
                             .then((i) => {
                                 let zippedUser = {
-                                    _id:i._id,
-                                    cart:i.cart,
-                                    seller:i.seller
-                                }
+                                    _id: i._id,
+                                    cart: i.cart,
+                                    seller: i.seller,
+                                };
                                 let time = new Date();
                                 time.setTime(
                                     time.getTime() + 1 * 24 * 60 * 60 * 1000
                                 );
-                                document.cookie = `loginUser = ${JSON.stringify(zippedUser)} ; path= / ; expires =${time}`;
+                                document.cookie = `loginUser = ${JSON.stringify(
+                                    zippedUser
+                                )} ; path= / ; expires =${time}`;
                                 return;
                             });
                     }
                 });
             });
-        navigate("/shop")
     }
 
     return (
@@ -77,7 +83,7 @@ function LogIn() {
                     value: { ...formInput.password },
                 }}
             />
-            <MyButton name="login"/>
+            <MyButton name="login" />
         </form>
     );
 }

@@ -49,6 +49,7 @@
 .card .item-button {
   display: none;
   background-color: white;
+  color: black;
   border: none;
   font-weight: bolder;
   border-radius: 30px;

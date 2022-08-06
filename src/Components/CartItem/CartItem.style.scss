@@ -18,6 +18,19 @@
 }
 
 .cont {
+    .item-button {
+        display: none;
+        background-color: black;
+        color: white;
+        border: none;
+        font-weight: bolder;
+        border-radius: 30px;
+        position: relative;
+        width: 150px;
+        z-index: 100;
+        padding: 1em;
+    }
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,17 +40,4 @@
             display: block;
         }
     }
-}
-
-.item-button {
-    display: none;
-    background-color: black;
-    color: white;
-    border: none;
-    font-weight: bolder;
-    border-radius: 30px;
-    position: relative;
-    width: 150px;
-    z-index: 100;
-    padding: 1em;
 }
