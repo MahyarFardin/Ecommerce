@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import CommentItem from "../CommentItem/CommentItem.component";
 function Comments() {
     const [comments, setComments] = useState([]);
-    //useEffect(()=>,[])
+    useEffect(()=>{
+        
+    },[])
     return (
         <div>
             {comments != [] &&

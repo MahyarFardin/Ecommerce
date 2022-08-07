@@ -32,9 +32,7 @@ function MainPage() {
     }, []);
 
     //     fetch('http://fakestoreapi.com/products')
-    //         .then(res =>{
-    //             return res.json()
-    //         } )
+    //         .then(res =>res.json())
     //         .then(json => {
     //             setContainer(json)
     //             addProductsToDataBase(json)
@@ -51,8 +49,11 @@ function MainPage() {
     //             description:product.description,
     //             image:product.image,
     //             rating:{
-    //                 rate:product.rating.rate,
-    //                 count:product.rating.count
+    //                 rate:0,
+    //                 count:0
+    //             },
+    //             comments:{
+    //                 comment:[]
     //             }
     //         }
     //         // console.log(product);

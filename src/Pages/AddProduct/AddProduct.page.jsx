@@ -18,8 +18,8 @@ function AddProduct() {
 
 
     const handleSave=()=>{
-        product.Rating.Rate=(Math.random()*5).toFixed(1)
-        product.Rating.Count=Math.floor(Math.random()*1000)
+        product.Rating.Rate=0
+        product.Rating.Count=0
 
         fetch("http://localhost:3002/api/product")
         .then(i=>i.json())

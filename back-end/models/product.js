@@ -1,5 +1,5 @@
 const mongose = require('mongoose')
- 
+
 const Schema = mongose.Schema({ 
     id:{ 
         type:Number, 
@@ -26,12 +26,21 @@ const Schema = mongose.Schema({
         required:true
     },
     rating:{
-        rate:{type:Number , required:true},
+        rate:{type:Number , required:true}, 
         count:{type:Number , required:true}
     },
     category:{
         type:String,
         required:true
+    },
+    comments:{
+        comment:[{
+            text:{type:String},
+            commentOwner:{
+                type:mongose.Schema.Types.ObjectId,
+                ref:'User'
+            }
+        }]
     }
 })
 

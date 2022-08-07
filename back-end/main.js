@@ -6,7 +6,7 @@ const app = express()
 
 mongoose.Promise = global.Promise    
 
-
+const port = 3002
 
 mongoose.connect("mongodb://localhost/shop")
 .then(()=>{
@@ -29,15 +29,15 @@ app.use((req, res, next) => {
  
 const UserRouter = require('./routers/user')
 const ProductRouter = require('./routers/product')
-const addProductRouter = require('./routers/add-product')
+const addProductRouter = require('./routers/add-product')  
 
 
 app.use('/api/user' , UserRouter)
 app.use('/api/product' , ProductRouter)
-app.use('/api/add-product' , addProductRouter)
+app.use('/api/add-product' , addProductRouter)  
 
 
 
-app.listen(3002 , ()=>{
-    console.log('listening on port 3002 ');      
+app.listen(port , ()=>{
+    console.log('listening on port'+ port );      
 }) 

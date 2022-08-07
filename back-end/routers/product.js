@@ -20,7 +20,24 @@ router.get('/:id' , (req , res)=>{
     })
 })
 
+router.put('/:id' , async (req,res)=>{
+    const id = req.params.id
+    console.log(req.body);
+        await  Product.findByIdAndUpdate({_id:id} , {
+            id:req.body.id,
+            title:req.body.title,
+            price:req.body.price,
+            image:req.body.image,
+            description:req.body.description,
+            rating:req.body.rating,
+            category:req.body.category,
+            comments:req.body.comments
 
+        })  
+        .then(i=>res.send())
+        
+
+})
 
 
 

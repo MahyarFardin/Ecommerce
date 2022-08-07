@@ -10,7 +10,7 @@ function AddComment() {
         rate: 50,
     });
 
-    // useEffect({}, []);
+    // useEffect(()=>{}, []);
 
     const handleChange = (params) => {
         const value = params.target.value;
@@ -23,6 +23,32 @@ function AddComment() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const itemID = document.location.href.split('/')[4]
+        fetch('http://localhost:3002/api/product')
+        .then(rawData=>rawData.json())
+        .then(josn=>{
+            let target = josn.find(product=>{
+                return product.id == itemID
+            })
+
+            let count = parseInt(target.rating.count)
+            let rate =  parseInt(target.rating.rate)
+            target.rating.rate = Math.floor(parseInt(Number(count*rate) +  Number(comment.rate/20)) / parseInt(count+1))
+            target.rating.count++
+
+            const user = JSON.parse(document.cookie.split(',')[0].split(':')[1])
+            let newcomment = {
+                text:comment.comment,
+                commentOwner:user
+            }
+            target.comments.comment.push(newcomment)
+            fetch(`http://localhost:3002/api/product/${target._id}`,{
+                    method:"PUT" , 
+                    headers:{'Content-type':'application/json'},
+                    body:JSON.stringify(target)
+            })
+            
+        })
     };
 
     return (
