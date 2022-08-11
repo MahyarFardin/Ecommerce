@@ -5,8 +5,8 @@ import "./ItemCard.style.css";
 
 function ItemCard(props) {
 
-    const handleRemove = () => {
-        console.log("test");
+    const handleRemove = (props) => {
+        console.log(props);
     };
     
     return (

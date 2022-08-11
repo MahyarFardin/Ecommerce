@@ -12,9 +12,14 @@ function CartItem(props) {
             .then((json) => setItem(json));
     }, [item]);
 
-    const handleRemove = () => {
-        //fetch();
+    const handleRemove = async (event) => {
+        console.log(props);
+        // const userID = JSON.parse(document.cookie.split(',')[0].split(':')[1])
+        // await fetch(`http://localhost:3002/api/users/${userID}`)
+        // .then(i=>console.log(i))
+    
     };
+    
 
     return (
         <div className="card-cart">

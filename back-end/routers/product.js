@@ -12,12 +12,17 @@ router.get("/" , (req,res)=>{
 
 
 
-router.get('/:id' , (req , res)=>{
+router.get('/:id' ,async (req , res)=>{
     const id = req.params.id
-    Product.findById({_id:id})
-    .then(i=>{
-        res.send(i)
-    })
+    try {
+        const product =await  Product.findById({_id:id})
+        res.send(product)
+        
+    } catch (e) {
+        throw new Error(e)
+    }
+    
+    
 })
 
 router.put('/:id' , async (req,res)=>{

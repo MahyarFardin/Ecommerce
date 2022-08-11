@@ -12,19 +12,18 @@ function AddToCart({ price,id }) {
     
     async function addProdToDataBase(){
         let prod , user
-        await fetch(`https://fakestoreapi.com/products/${id}`)
-        .then(i=>i.json())
-        .then(async product=>{
+     
                 await fetch(`http://localhost:3002/api/product`)
                 .then(i=>{
                     return i.json()
                 })
-                .then(products=>{
+                .then(async products=>{
                     prod = products.find(i=>{
                         return i.id == id
                     })
-                })
+ 
                 user = JSON.parse(document.cookie.split('=')[1])
+           
                 await fetch(`http://localhost:3002/api/user/${user._id}`)
                 .then(i=> {
                     return i.json()

@@ -41,13 +41,15 @@ function AddComment() {
                 text:comment.comment,
                 commentOwner:user
             }
+            console.log(newcomment);
+
             target.comments.comment.push(newcomment)
             fetch(`http://localhost:3002/api/product/${target._id}`,{
                     method:"PUT" , 
                     headers:{'Content-type':'application/json'},
                     body:JSON.stringify(target)
             })
-            
+            console.log('successfult comment added');
         })
     };
 
