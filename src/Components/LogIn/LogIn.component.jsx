@@ -27,7 +27,6 @@ function LogIn() {
         params.preventDefault();
         login();
         setSignCheck(true);
-        navigate("/shop");
     }
 
     async function login() {
@@ -35,13 +34,8 @@ function LogIn() {
             .then((i) => i.json())
             .then((users) => {
                 users.forEach(async (user) => {
-                    if (
-                        user.email == formInput.email &&
-                        user.pass == formInput.password
-                    ) {
-                        await fetch(
-                            `http://localhost:3002/api/user/${user._id}`
-                        )
+                    if (user.email == formInput.email &&user.pass == formInput.password) {
+                        await fetch(`http://localhost:3002/api/user/${user._id}`)
                             .then((i) => i.json())
                             .then((i) => {
                                 let zippedUser = {
@@ -53,11 +47,12 @@ function LogIn() {
                                 time.setTime(
                                     time.getTime() + 1 * 24 * 60 * 60 * 1000
                                 );
-                                document.cookie = `loginUser = ${JSON.stringify(
-                                    zippedUser
-                                )} ; path= / ; expires =${time}`;
+                                document.cookie = `loginUser = ${JSON.stringify(zippedUser)} ; path= / ; expires =${time}`;
+                                navigate("/shop");
                                 return;
                             });
+                    }else{
+                        alert('email or password is in correct')
                     }
                 });
             });

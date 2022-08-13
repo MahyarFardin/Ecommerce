@@ -33,7 +33,7 @@ function AddComment() {
 
             let count = parseInt(target.rating.count)
             let rate =  parseInt(target.rating.rate)
-            target.rating.rate = Math.floor(parseInt(Number(count*rate) +  Number(comment.rate/20)) / parseInt(count+1))
+            target.rating.rate = (parseInt(Number(count*rate) +  Number(comment.rate/20)) / parseInt(count+1)).toFixed(1)
             target.rating.count++
 
             const user = JSON.parse(document.cookie.split(',')[0].split(':')[1])

@@ -12,11 +12,26 @@ function CartItem(props) {
             .then((json) => setItem(json));
     }, [item]);
 
-    const handleRemove = async (event) => {
-        console.log(props);
-        // const userID = JSON.parse(document.cookie.split(',')[0].split(':')[1])
-        // await fetch(`http://localhost:3002/api/users/${userID}`)
-        // .then(i=>console.log(i))
+    const handleRemove = async () => {
+        const productID = props.productId
+        const userID = JSON.parse(document.cookie.split(',')[0].split(':')[1])
+        // console.log(productID);
+        await fetch(`http://localhost:3002/api/user/${userID}`)
+        .then(i=>i.json())
+        .then(user=>{
+            const index = user.cart.items.findIndex(prod=>{
+                console.log(prod);
+                return prod.productId === productID
+            })
+            user.cart.items.splice(index , 1)
+            console.log(user.cart)
+            fetch(`http://localhost:3002/api/user/${userID}` , {
+                method:"PUT",
+                headers:{'Content-type':'application/json'},
+                body:JSON.stringify(user)
+            })
+            alert('product deleted')
+        })
     
     };
     
