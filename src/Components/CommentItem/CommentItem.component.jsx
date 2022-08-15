@@ -1,13 +1,20 @@
-import React from 'react'
-import "./CommentItem.style.css"
+import React from "react";
+import { FaUserAlt } from "react-icons/fa";
+import "./CommentItem.style.css";
 
 function CommentItem(props) {
-    return ( 
-        <div className='comment-item'>
-            <h3>{props.firstName} {props.lastName}</h3>
-            <p>{props.comment}</p>
+    console.log(props.comment);
+    return (
+        <div className="comment-item">
+            <div className="temp-cont">
+                <FaUserAlt size={20} />
+                <h3>
+                    {props.comment.firstName} {props.comment.lastName}
+                </h3>
+            </div>
+            <p>{props.comment.comment}</p>
         </div>
-     );
+    );
 }
 
 export default CommentItem;

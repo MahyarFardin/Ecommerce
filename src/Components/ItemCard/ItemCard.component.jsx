@@ -5,8 +5,11 @@ import "./ItemCard.style.css";
 
 function ItemCard(props) {
 
-    const handleRemove = (props) => {
-        console.log(props);
+    const handleRemove = () => {
+        // todo 
+        // ths is product id ==> props.item._id
+        // remove product
+        props.removeHandler(prev=>!prev)
     };
     
     return (

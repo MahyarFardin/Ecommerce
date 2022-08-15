@@ -4,6 +4,10 @@
     border-radius: 20px;
     margin: 30px;
 }
+.comment-item h3{
+    text-transform: uppercase;
+}
 .comment-item p{
-    margin: 1em
+    margin-top: -5em;
+    margin-left: 1em
 }

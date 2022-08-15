@@ -39,6 +39,7 @@ function SignIn() {
     }
 
     function signUp() {
+        console.log(profile)
         let newUser = {
             firstName: profile.firstName,
             lastName: profile.lastName,
@@ -52,6 +53,16 @@ function SignIn() {
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(newUser),
         });
+
+        setProfile({
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+            confirmPassword: "",
+            address: "",
+            seller: false,
+        })
     }
 
     return (

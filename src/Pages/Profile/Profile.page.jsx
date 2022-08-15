@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { userSignInCheck } from "../../App";
+import {FiMapPin} from "react-icons/fi"
 import { useNavigate } from "react-router-dom";
 import Cart from "../../Components/Cart/Cart.page";
 import MyButton from "../../Components/MyButton/MyButton.component";
@@ -35,8 +36,10 @@ function Profile() {
 
     return (
         <div style={{ margin: "3em" }} className="profile page">
-            <h1>{user.firstName + " " + user.lastName}</h1>
-            <p>{user.address}</p>
+            <h1 style={{textTransform:"uppercase"}}>{user.firstName + " " + user.lastName}</h1>
+            <p>{user.address}
+                <FiMapPin size={25} style={{marginLeft:"1em"}}/>
+            </p>
 
             <MyButton name="Log out" func={handleClick} />
 
@@ -46,7 +49,9 @@ function Profile() {
                 </Link>
             )}
 
-            {user.cart && <Cart {...user.cart} />}
+            <hr style={{marginTop:"3em", width:"100%", border:".5px solid #5F5449"}}/>
+            <h3>This is your cart:</h3>
+            {user.cart && <Cart />}
         </div>
     );
 }

@@ -4,12 +4,11 @@ import ItemCard from "../../Components/ItemCard/ItemCard.component"
 import "./ProductManager.style.css";
 
 function ProductManager({}) {
+    const [changed, setChanged]= useState(true)
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
         const userloginId = JSON.parse(document.cookie.split(":")[1].split(',')[0]);
-        
-
         fetch(`http://localhost:3002/api/user/${userloginId}`)
             .then((rawData) => rawData.json())
             .then((json) => {
@@ -25,7 +24,7 @@ function ProductManager({}) {
                     
                 })
             })
-        }, []);
+        }, [changed]);
 
         return (
             <div className="container-pm-main">
@@ -42,8 +41,9 @@ function ProductManager({}) {
                         <span>Add product Here</span>
                     </div>
                 </Link>
+                
                 {products.map((item) => (
-                    <ItemCard key={item._id} kind={"pm"} {...{ item }} />
+                    <ItemCard key={item._id} kind={"pm"} {...{ item }} removeHandler={setChanged} />
                 ))}
             </div>
         </div>

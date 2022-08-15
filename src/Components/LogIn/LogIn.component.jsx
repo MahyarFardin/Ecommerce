@@ -34,7 +34,7 @@ function LogIn() {
             .then((i) => i.json())
             .then((users) => {
                 users.forEach(async (user) => {
-                    if (user.email == formInput.email &&user.pass == formInput.password) {
+                    if (user.email === formInput.email &&user.pass === formInput.password) {
                         await fetch(`http://localhost:3002/api/user/${user._id}`)
                             .then((i) => i.json())
                             .then((i) => {
