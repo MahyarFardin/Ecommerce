@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { userSignInCheck } from "../../App";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MyInput from "../MyInput/MyInput.component";
 import MyButton from "../MyButton/MyButton.component";
 import "./LogIn.style.css";
@@ -34,8 +34,13 @@ function LogIn() {
             .then((i) => i.json())
             .then((users) => {
                 users.forEach(async (user) => {
-                    if (user.email === formInput.email &&user.pass === formInput.password) {
-                        await fetch(`http://localhost:3002/api/user/${user._id}`)
+                    if (
+                        user.email === formInput.email &&
+                        user.pass === formInput.password
+                    ) {
+                        await fetch(
+                            `http://localhost:3002/api/user/${user._id}`
+                        )
                             .then((i) => i.json())
                             .then((i) => {
                                 let zippedUser = {
@@ -47,12 +52,14 @@ function LogIn() {
                                 time.setTime(
                                     time.getTime() + 1 * 24 * 60 * 60 * 1000
                                 );
-                                document.cookie = `loginUser = ${JSON.stringify(zippedUser)} ; path= / ; expires =${time}`;
+                                document.cookie = `loginUser = ${JSON.stringify(
+                                    zippedUser
+                                )} ; path= / ; expires =${time}`;
                                 navigate("/shop");
                                 return;
                             });
-                    }else{
-                        alert('email or password is in correct')
+                    } else {
+                        alert("email or password is in correct");
                     }
                 });
             });
@@ -79,6 +86,9 @@ function LogIn() {
                 }}
             />
             <MyButton name="login" />
+            <div style={{ marginTop: "1em" }}>
+                <Link to={"/pass-recovery"}>Forget Password</Link>
+            </div>
         </form>
     );
 }
