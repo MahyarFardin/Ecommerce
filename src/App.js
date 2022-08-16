@@ -12,6 +12,7 @@ import ProductManager from './Pages/ProductManager/ProductManager.page';
 import AddProduct from './Pages/AddProduct/AddProduct.page';
 import Footer from './Components/Footer/Footer.component';
 import ForgetPass from './Pages/ForgetPass/ForgetPass.page';
+import PassRecovery from './Pages/PassRecovery/PassRecovery.page';
 
 
 export const userSignInCheck = createContext(null)
@@ -30,7 +31,8 @@ function App() {
           <Route path='/profile' element={<Profile />} />
           <Route path='/product-manager' element={<ProductManager />} />
           <Route path='/add-product' element={<AddProduct />} />
-          <Route path='/pass-recovery' element={<ForgetPass />} />
+          <Route path='/email-verify' element={<ForgetPass />} />
+          <Route path='/pass-recovery' element={<PassRecovery />} />
         </Routes>
         <Footer />
       </userSignInCheck.Provider>
