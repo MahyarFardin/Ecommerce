@@ -5,10 +5,30 @@ import "./ItemCard.style.css";
 
 function ItemCard(props) {
 
-    const handleRemove = () => {
-        // todo 
-        // ths is product id ==> props.item._id
-        // remove product
+    const handleRemove = async () => {
+        const productID = props.item._id
+        const userID = JSON.parse(document.cookie.split(",")[0].split(":")[1]);
+        await fetch("http://localhost:3002/api/user/"+userID)
+        .then((i) => i.json())
+        .then(async (user) => {
+            const index = user.products.items.findIndex((prod) => {
+                return prod.productId === productID;
+            });
+            user.products.items.splice(index, 1);
+            await fetch(`http://localhost:3002/api/user/${userID}`, {
+                method: "PUT",
+                headers: { "Content-type": "application/json" },
+                body: JSON.stringify(user),
+            });
+            await fetch(`http://localhost:3002/api/product/${productID}`, {
+                method: "DELETE",
+                headers: { "Content-type": "application/json" },
+                body: JSON.stringify(user),
+            })
+            
+            props.handleReRender(prev=>!prev)
+            alert("Item removed successfully")
+        });
         props.removeHandler(prev=>!prev)
     };
     

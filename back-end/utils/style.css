@@ -1,0 +1,31 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.main{
+    border: 1px solid black;
+    width: max-content;
+    height: max-content;
+    margin: 4rem auto;
+    padding: 2rem 6rem;
+    background-color: #333;
+}
+
+.title{
+    color: white;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.btn{
+    margin: 1rem 9rem;
+    padding: .5rem 1rem;
+    background-color: rgb(95, 228, 95);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}

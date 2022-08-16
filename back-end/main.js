@@ -30,10 +30,12 @@ app.use((req, res, next) => {
 const UserRouter = require('./routers/user')
 const ProductRouter = require('./routers/product')
 const addProductRouter = require('./routers/add-product')  
+const EmailRouter = require('./routers/auth')   
 
 
 app.use('/api/user' , UserRouter)
 app.use('/api/product' , ProductRouter)
+app.use('/api/pass-recovery' , EmailRouter)  
 app.use('/api/add-product' , addProductRouter)  
 
 

@@ -8,9 +8,12 @@ function ForgetPass() {
     const handleChange=(event)=>{
         setEmail(event.target.value)
     }
-    const handleSubmit=()=>{
+    const handleSubmit=(e)=>{
+        e.preventDefault()
+        console.log(email);
         // todo 
         // email recovery
+        fetch(`http://localhost:3002/api/pass-recovery?email=${email}`)
     }
 
     return (
