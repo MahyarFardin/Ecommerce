@@ -4,7 +4,6 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import "./ItemCard.style.css";
 
 function ItemCard(props) {
-
     const handleRemove = async () => {
         const productID = props.item._id
         const userID = JSON.parse(document.cookie.split(",")[0].split(":")[1]);
@@ -26,10 +25,9 @@ function ItemCard(props) {
                 body: JSON.stringify(user),
             })
             
-            props.handleReRender(prev=>!prev)
             alert("Item removed successfully")
+            window.location.reload();
         });
-        props.removeHandler(prev=>!prev)
     };
     
     return (

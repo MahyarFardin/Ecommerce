@@ -28,12 +28,16 @@ function ProductPage() {
                 <div className="description">
                     <h1>{item.title}</h1>
                     <p>{item.description}</p>
-                    <AddToCart price={item.price} id={params.id} />
+                    {document.cookie && (
+                        <AddToCart price={item.price} id={params.id} />
+                    )}
                 </div>
             </div>
-            <div>
-                <CommentsComponent />
-            </div>
+            {document.cookie && (
+                <div>
+                    <CommentsComponent />
+                </div>
+            )}
         </div>
     );
 }

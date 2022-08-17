@@ -9,7 +9,7 @@ function Comments() {
             .then((rawData) => rawData.json())
             .then((json) => {
                 let target = json.find((product) => {
-                    return product.id === productId;
+                    return product.id === +productId;
                 });
                 target.comments.comment.forEach((comment) => {
                     fetch(
@@ -30,6 +30,7 @@ function Comments() {
             });
     }, []);
 
+    console.log(comments);
     return (
         <div>
             {comments.map((comment) => (

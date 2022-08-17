@@ -4,7 +4,7 @@ import ItemCard from "../../Components/ItemCard/ItemCard.component"
 import "./ProductManager.style.css";
 
 function ProductManager({}) {
-    const [changed, setChanged]= useState(true)
+    const [changed, setChanged]= useState(0)
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -26,6 +26,7 @@ function ProductManager({}) {
             })
         }, [changed]);
 
+        console.log(products);
         return (
             <div className="container-pm-main">
             <h1>Your products</h1>
@@ -43,7 +44,7 @@ function ProductManager({}) {
                 </Link>
                 
                 {products.map((item) => (
-                    <ItemCard key={item._id} kind={"pm"} {...{ item }} removeHandler={setChanged} />
+                    <ItemCard key={item._id} kind={"pm"} {...{ item }} rmHandle={setChanged} />
                 ))}
             </div>
         </div>

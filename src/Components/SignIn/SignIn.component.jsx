@@ -33,7 +33,7 @@ function SignIn() {
     }
 
     function handleSubmit(params) {
-        //params.preventDefault();
+        params.preventDefault();
         if (handleEquation()) signUp();
         else alert("Password missmatch");
     }
@@ -53,6 +53,7 @@ function SignIn() {
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(newUser),
         });
+        window.location.reload(false)
     }
 
     return (

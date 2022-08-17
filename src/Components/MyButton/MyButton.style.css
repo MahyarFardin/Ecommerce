@@ -8,6 +8,7 @@
     color: #AFA193;
     border: 2px #AFA193 solid;
     display: inline-block;
+    margin: 10px;
 }
 .my-button:hover{
     background-color: #AFA193;

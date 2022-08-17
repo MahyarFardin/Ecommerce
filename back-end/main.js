@@ -2,10 +2,10 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require("body-parser") 
 
-const app = express() 
+const app = express()  
 
 mongoose.Promise = global.Promise    
-
+   
 const port = 3002
 
 mongoose.connect("mongodb://localhost/shop")

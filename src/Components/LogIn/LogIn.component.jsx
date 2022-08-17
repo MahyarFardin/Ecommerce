@@ -33,14 +33,16 @@ function LogIn() {
         await fetch("http://localhost:3002/api/user")
             .then((i) => i.json())
             .then((users) => {
-                users.forEach(async (user) => {
+                let flag = false;
+                let allUsers=users
+                for (let i = 0; i < allUsers.length; i++) {
+                    let user = allUsers[i];
                     if (
                         user.email === formInput.email &&
                         user.pass === formInput.password
                     ) {
-                        await fetch(
-                            `http://localhost:3002/api/user/${user._id}`
-                        )
+                        flag = true;
+                        fetch(`http://localhost:3002/api/user/${user._id}`)
                             .then((i) => i.json())
                             .then((i) => {
                                 let zippedUser = {
@@ -55,13 +57,15 @@ function LogIn() {
                                 document.cookie = `loginUser = ${JSON.stringify(
                                     zippedUser
                                 )} ; path= / ; expires =${time}`;
-                                navigate("/shop");
-                                return;
+                                console.log("this is a test");
                             });
-                    } else {
-                        alert("email or password is in correct");
+                        break;
                     }
-                });
+                }
+                if (flag === false) {
+                    alert("This information mismatch");
+                }
+                navigate("/shop");
             });
     }
 
@@ -86,8 +90,10 @@ function LogIn() {
                 }}
             />
             <MyButton name="login" />
-            <div style={{ marginTop: "1em"}}>
-                <Link to={"/email-verify"} className='forget-pass'>Forget Password</Link>
+            <div style={{ marginTop: "1em" }}>
+                <Link to={"/email-verify"} className="forget-pass">
+                    Forget Password
+                </Link>
             </div>
         </form>
     );
