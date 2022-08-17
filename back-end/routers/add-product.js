@@ -15,7 +15,7 @@ router.post("/" ,async (req,res)=>{
         }) 
     
         await newProduct.save()
-        res.send(newProduct)
+        res.status(201).send(newProduct)
 
     } catch (e) {
         throw new Error(e)
@@ -37,7 +37,7 @@ router.post("/:id" ,async  (req,res)=>{
         }) 
     
         await newProduct.save()
-        res.send(newProduct)
+        res.status(201).send(newProduct)
     } catch (e) {
         throw new Error(e)
     }

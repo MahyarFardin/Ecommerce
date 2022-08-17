@@ -1,7 +1,7 @@
 const express = require('express')
 const User = require('../models/user')
 const Cryptr = require('cryptr')
-cryptr = new Cryptr(process.env.SECRET_KEY)
+cryptr = new Cryptr('nimamleo')
 const { sendEmail } = require('../utils/email')
 const router = express.Router()
 
@@ -16,7 +16,7 @@ router.put('/api/user/req/:id' , async (req,res)=>{
         let encryptpPass = cryptr.encrypt(req.body.password)
         user.pass = encryptpPass
         await user.save()
-        res.send()
+        res.status(200).send()
         
     } catch (e) {
         throw new Error(e)
@@ -31,7 +31,7 @@ router.get("/api/user" , async (req,res)=>{
             users.forEach(user=>{
                 user.pass = cryptr.decrypt(user.pass)
             })
-            res.send(users)
+            res.status(200).send(users)
         })
         
     } catch (e) {
@@ -44,7 +44,7 @@ router.get('/api/user/:id' ,async  (req , res)=>{
     try {
         await User.findById({_id:id})
         .then(i=>{
-            res.send(i)
+            res.status(200).send(i)
         })
     } catch (e) {
         throw new Error(e)
@@ -70,7 +70,7 @@ router.post('/api/user' ,async (req , res)=>{
             products:{items:[]}
         })
         newUser.save() 
-        res.send(newUser) 
+        res.status(201).send(newUser) 
     } catch (e) {
         throw new Error(e)
     }
@@ -91,7 +91,7 @@ router.put('/api/user/:id' ,async  (req,res)=>{
             products:req.body.products
         })
         .then(i=>{
-            res.send(i)
+            res.status(200).send(i)
         })
     } catch (e) {
         throw new Error(e)

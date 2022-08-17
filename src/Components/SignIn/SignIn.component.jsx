@@ -38,7 +38,7 @@ function SignIn() {
         else alert("Password missmatch");
     }
 
-    function signUp() {
+    async function signUp() {
         console.log(profile)
         let newUser = {
             firstName: profile.firstName,
@@ -48,7 +48,7 @@ function SignIn() {
             address: profile.address,
             seller: profile.seller,
         };
-        fetch("http://localhost:3002/api/user", {
+        await fetch("http://localhost:3002/api/user", {
             method: "POST",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(newUser),

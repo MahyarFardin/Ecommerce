@@ -7,7 +7,7 @@ router.get("/" , async (req,res)=>{
     try {
         await Product.find()
         .then(i=>{
-            res.send(i)
+            res.status(200).send(i)
         })
         
     } catch (e) {
@@ -21,7 +21,7 @@ router.get('/:id' ,async (req , res)=>{
     const id = req.params.id
     try {
         const product =await  Product.findById({_id:id})
-        res.send(product)
+        res.status(200).send(product)
         
     } catch (e) {
         throw new Error(e)
@@ -43,7 +43,7 @@ router.put('/:id' , async (req,res)=>{
                 comments:req.body.comments
     
             })  
-            .then(i=>res.send())
+            .then(i=>res.status(200).send())
     } catch (e) {
         throw new Error(e)
     }
@@ -56,7 +56,7 @@ router.delete('/:id' , async(req , res)=>{
     const id = req.params.id
     try {
         await Product.deleteOne({_id:id})
-        res.send()
+        res.status(200).send()
         
     } catch (e) {
 
