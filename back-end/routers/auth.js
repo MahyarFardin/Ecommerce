@@ -6,14 +6,17 @@ const router = express.Router()
 
 
 router.get('/' , async (req , res)=>{
-    const email = req.query.email
-    req.email = email
-    sendEmail({email:email})
-    const user =await  User.findOne({email:email}) ;
-
-
-
-    res.send()
+    try {
+        const email = req.query.email
+        req.email = email
+        sendEmail({email:email})
+        const user =await  User.findOne({email:email}) ;
+    
+        res.send()
+        
+    } catch (e) {
+        throw new Error(e)
+    }
 })
 
 

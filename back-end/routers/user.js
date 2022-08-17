@@ -8,70 +8,96 @@ const router = express.Router()
 
 router.put('/api/user/req/:id' , async (req,res)=>{
     const id = req.params.id
-    const user =await  User.findById({_id:id})
-    let encryptpPass = cryptr.encrypt(req.body.password)
-    console.log(user.pass);
-    console.log(encryptpPass);
-    user.pass = encryptpPass
-    await user.save()
-    res.send()
+    try {
+        const user =await  User.findById({_id:id})
+        if (!user) {
+            return new Error('user not found')
+        }
+        let encryptpPass = cryptr.encrypt(req.body.password)
+        user.pass = encryptpPass
+        await user.save()
+        res.send()
+        
+    } catch (e) {
+        throw new Error(e)
+    }
 })
 
 
-router.get("/api/user" , (req,res)=>{
-    User.find()
-    .then(users=>{
-        users.forEach(user=>{
-            user.pass = cryptr.decrypt(user.pass)
+router.get("/api/user" , async (req,res)=>{
+    try {
+        const users = await User.find()
+        .then(users=>{
+            users.forEach(user=>{
+                user.pass = cryptr.decrypt(user.pass)
+            })
+            res.send(users)
         })
-        res.send(users)
-    })
+        
+    } catch (e) {
+        throw new Error(e)
+    }
 })
 
-router.get('/api/user/:id' , (req , res)=>{ 
+router.get('/api/user/:id' ,async  (req , res)=>{ 
     const id = req.params.id
-    User.findById({_id:id})
-    .then(i=>{
-        res.send(i)
-    })
+    try {
+        await User.findById({_id:id})
+        .then(i=>{
+            res.send(i)
+        })
+    } catch (e) {
+        throw new Error(e)
+    }
+    
 }) 
 
 
 
 
-router.post('/api/user' ,(req , res)=>{
-    let userPass = req.body.pass 
-    let encryptpPass = cryptr.encrypt(userPass)
-    let newUser = new User({
-        firstName:req.body.firstName, 
-        lastName:req.body.lastName,
-        email:req.body.email,
-        address:req.body.address,
-        pass:encryptpPass,
-        seller: req.body.seller,
-        cart:{items:[]},
-        products:{items:[]}
-    })
-    newUser.save() 
-    res.send(newUser) 
+router.post('/api/user' ,async (req , res)=>{
+    try {
+        let userPass = req.body.pass 
+        let encryptpPass = cryptr.encrypt(userPass)
+        let newUser = await new User({
+            firstName:req.body.firstName, 
+            lastName:req.body.lastName,
+            email:req.body.email,
+            address:req.body.address,
+            pass:encryptpPass,
+            seller: req.body.seller,
+            cart:{items:[]},
+            products:{items:[]}
+        })
+        newUser.save() 
+        res.send(newUser) 
+    } catch (e) {
+        throw new Error(e)
+    }
+
 }) 
 
 
-router.put('/api/user/:id' , (req,res)=>{
+router.put('/api/user/:id' ,async  (req,res)=>{
+    try {
+        await User.findByIdAndUpdate({_id:id} , {
+            firstName:req.body.firstName,
+            lastName:req.body.lastName,
+            email:req.body.email,
+            address:req.body.address,
+            pass:req.body.pass,
+            seller: req.body.seller,
+            cart:req.body.cart,
+            products:req.body.products
+        })
+        .then(i=>{
+            res.send(i)
+        })
+    } catch (e) {
+        throw new Error(e)
+    }
     const id = req.params.id
-    User.findByIdAndUpdate({_id:id} , {
-        firstName:req.body.firstName,
-        lastName:req.body.lastName,
-        email:req.body.email,
-        address:req.body.address,
-        pass:req.body.pass,
-        seller: req.body.seller,
-        cart:req.body.cart,
-        products:req.body.products
-    })
-    .then(i=>{
-        res.send(i)
-    })
+ 
 
 
 

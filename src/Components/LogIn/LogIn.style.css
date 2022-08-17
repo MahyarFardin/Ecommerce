@@ -4,3 +4,13 @@
     text-align: left;
 }
 
+.forget-pass{
+    text-decoration: none;
+    color: black;
+    transition: all .3s;
+}
+
+.forget-pass:hover{
+    color: rgb(62, 141, 202);
+    font-size: larger;
+}
