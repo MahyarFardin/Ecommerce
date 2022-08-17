@@ -38,16 +38,6 @@ function SignIn() {
         else alert("Password missmatch");
     }
 
-    function revert() {
-        setProfile.firstName = "";
-        setProfile.lastName = "";
-        setProfile.address = "";
-        setProfile.email = "";
-        setProfile.password = "";
-        setProfile.confirmPassword = "";
-        setProfile.seller = false;
-    }
-    
     function signUp() {
         console.log(profile);
         let newUser = {
@@ -64,7 +54,13 @@ function SignIn() {
             body: JSON.stringify(newUser),
         });
 
-        revert();
+        setProfile.firstName = "";
+        setProfile.lastName = "";
+        setProfile.address = "";
+        setProfile.email = "";
+        setProfile.password = "";
+        setProfile.confirmPassword = "";
+        setProfile.seller = false;
     }
 
     return (
