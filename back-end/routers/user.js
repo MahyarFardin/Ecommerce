@@ -1,7 +1,7 @@
 const express = require('express')
 const User = require('../models/user')
 const Cryptr = require('cryptr')
-cryptr = new Cryptr('nimamleo')
+cryptr = new Cryptr(process.env.SECRET_KEY)
 const { sendEmail } = require('../utils/email')
 const router = express.Router()
 

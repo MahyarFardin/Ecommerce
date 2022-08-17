@@ -6,9 +6,9 @@ const app = express()
 
 mongoose.Promise = global.Promise    
 
-const port = 3002
+const port = process.env.PORT || 3002
 
-mongoose.connect("mongodb://localhost/shop")
+mongoose.connect(process.env.MONGODB_URL)
 .then(()=>{
     console.log("database successfuly connected ");
 })
