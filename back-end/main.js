@@ -1,15 +1,14 @@
-const express = require('express')  
+const express = require('express') 
 const mongoose = require('mongoose')
-const bodyParser = require("body-parser")  
+const bodyParser = require("body-parser") 
 
 const app = express() 
 
 mongoose.Promise = global.Promise    
 
-const port = process.env.PORT || 3002
+const port = 3002
 
-// mongoose.connect(process.env.MONGODB_URL)
-mongoose.connect('mongodb://localhost/shop') 
+mongoose.connect("mongodb://localhost/shop")
 .then(()=>{
     console.log("database successfuly connected ");
 })

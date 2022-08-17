@@ -10,7 +10,7 @@ router.get('/' , async (req , res)=>{
 //        sendEmail({email:email})
         const user =await  User.findOne({email:email}) ;
     
-        res.status(200).send()
+        res.send()
         
     } catch (e) {
         throw new Error(e)

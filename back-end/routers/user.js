@@ -16,7 +16,7 @@ router.put('/api/user/req/:id' , async (req,res)=>{
         let encryptpPass = cryptr.encrypt(req.body.password)
         user.pass = encryptpPass
         await user.save()
-        res.status(200).send()
+        res.send()
         
     } catch (e) {
         throw new Error(e)
@@ -31,7 +31,7 @@ router.get("/api/user" , async (req,res)=>{
             users.forEach(user=>{
                 user.pass = cryptr.decrypt(user.pass)
             })
-            res.status(200).send(users)
+            res.send(users)
         })
         
     } catch (e) {
@@ -44,7 +44,7 @@ router.get('/api/user/:id' ,async  (req , res)=>{
     try {
         await User.findById({_id:id})
         .then(i=>{
-            res.status(200).send(i)
+            res.send(i)
         })
     } catch (e) {
         throw new Error(e)
@@ -70,7 +70,7 @@ router.post('/api/user' ,async (req , res)=>{
             products:{items:[]}
         })
         newUser.save() 
-        res.status(201).send(newUser) 
+        res.send(newUser) 
     } catch (e) {
         throw new Error(e)
     }
@@ -79,6 +79,7 @@ router.post('/api/user' ,async (req , res)=>{
 
 
 router.put('/api/user/:id' ,async  (req,res)=>{
+    const id = req.params.id
     try {
         await User.findByIdAndUpdate({_id:id} , {
             firstName:req.body.firstName,
@@ -91,12 +92,11 @@ router.put('/api/user/:id' ,async  (req,res)=>{
             products:req.body.products
         })
         .then(i=>{
-            res.status(200).send(i)
+            res.send(i)
         })
     } catch (e) {
         throw new Error(e)
     }
-    const id = req.params.id
  
 
 

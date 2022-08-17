@@ -12,7 +12,7 @@ function AddToCart({ price,id }) {
     
     async function addProdToDataBase(){
         let prod , user
-     
+            console.log(id);
                 await fetch(`http://localhost:3002/api/product`)
                 .then(i=>{
                     return i.json()
@@ -44,7 +44,8 @@ function AddToCart({ price,id }) {
                         quantity:number.current.innerText
                     })
                 }
-                fetch(`http://localhost:3002/api/user/${user._id}`,{
+                // console.log(user);
+                await fetch(`http://localhost:3002/api/user/${user._id}`,{
                     method:"PUT" , 
                     headers:{'Content-type':'application/json'},
                     body:JSON.stringify(user)
