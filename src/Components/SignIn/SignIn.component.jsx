@@ -33,7 +33,7 @@ function SignIn() {
     }
 
     function handleSubmit(params) {
-        params.preventDefault();
+        //params.preventDefault();
         if (handleEquation()) signUp();
         else alert("Password missmatch");
     }
