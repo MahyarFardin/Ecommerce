@@ -33,13 +33,18 @@ function SignIn() {
     }
 
     function handleSubmit(params) {
-        params.preventDefault();
+        //params.preventDefault();
         if (handleEquation()) signUp();
         else alert("Password missmatch");
     }
 
+<<<<<<< HEAD
     async function signUp() {
         console.log(profile)
+=======
+    function signUp() {
+        console.log(profile);
+>>>>>>> df2e63bbbf691fd3454c5cdb5389fad692145ca9
         let newUser = {
             firstName: profile.firstName,
             lastName: profile.lastName,
@@ -53,16 +58,6 @@ function SignIn() {
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(newUser),
         });
-
-        setProfile({
-            firstName: "",
-            lastName: "",
-            email: "",
-            password: "",
-            confirmPassword: "",
-            address: "",
-            seller: false,
-        })
     }
 
     return (
