@@ -53,14 +53,6 @@ function SignIn() {
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(newUser),
         });
-
-        setProfile.firstName = "";
-        setProfile.lastName = "";
-        setProfile.address = "";
-        setProfile.email = "";
-        setProfile.password = "";
-        setProfile.confirmPassword = "";
-        setProfile.seller = false;
     }
 
     return (
