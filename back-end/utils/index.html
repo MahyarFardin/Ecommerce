@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 
     <style>
@@ -30,18 +31,20 @@
     border-radius: 10px;
     cursor: pointer;
 }
+
+.btn a{
+    text-decoration: none;
+    color: black;
+}
     </style>
 </head>
 <body>
         <div class="main" >
             <h3 class="title">click the below button to reset your password</h3>
-            <button class="btn">click here!</button>
+            <button class="btn"><a href="http://localhost:3000/pass-recovery">click here!</a></button>
         </div>
-        <script>
-            let btn = document.querySelector('.btn')
-            btn.addEventListener('click' , ()=>{
-                window.open('http://localhost:3000/auth')
-            })
-        </script>
+    <script >
+        document.location.href
+    </script>
 </body>
 </html>

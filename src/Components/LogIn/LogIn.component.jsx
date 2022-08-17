@@ -87,7 +87,7 @@ function LogIn() {
             />
             <MyButton name="login" />
             <div style={{ marginTop: "1em" }}>
-                <Link to={"/pass-recovery"}>Forget Password</Link>
+                <Link to={"/email-verify"}>Forget Password</Link>
             </div>
         </form>
     );

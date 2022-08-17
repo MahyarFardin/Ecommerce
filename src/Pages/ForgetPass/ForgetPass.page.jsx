@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useResolvedPath } from 'react-router-dom';
 import MyButton from '../../Components/MyButton/MyButton.component';
 import MyInput from "../../Components/MyInput/MyInput.component";
 
@@ -10,10 +11,29 @@ function ForgetPass() {
     }
     const handleSubmit=(e)=>{
         e.preventDefault()
-        console.log(email);
-        // todo 
-        // email recovery
-        fetch(`http://localhost:3002/api/pass-recovery?email=${email}`)
+        fetch(`http://localhost:3002/api/user`)
+        .then(i=>i.json())
+        .then(users=>{
+            const isExist = users.find(user=>{
+                return user.email == email
+            })
+            if (isExist) {
+                fetch(`http://localhost:3002/api/pass-recovery?email=${email}`)  
+                fetch(`http://localhost:3002/api/user`)
+                .then(i=>i.json())
+                .then(users=>{
+                    const target = users.find(user=>{
+                        return user.email == email
+                    })
+                    localStorage.setItem('email-forget-pass' , JSON.stringify(target._id))
+                    alert('email sent please check your email box or spam box')
+                })
+                
+            }else{
+                return alert('this email dose not exists')
+            }
+        })
+
     }
 
     return (

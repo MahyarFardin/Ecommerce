@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import MyButton from "../../Components/MyButton/MyButton.component";
 import MyInput from "../../Components/MyInput/MyInput.component";
+import { Link, useNavigate } from "react-router-dom";
 
 function PassRecovery() {
+    const navigate = useNavigate();
     const [recPass, setRecPass] = useState({
         pass: "",
         checkPass: "",
@@ -15,7 +17,22 @@ function PassRecovery() {
             [name]: value,
         }));
     };
-     const handleSubmit = () => {};
+     const handleSubmit = (e) => {
+        e.preventDefault()
+        if (recPass.checkPass == recPass.password) {
+            const userId = JSON.parse(localStorage.getItem('email-forget-pass'))
+
+            fetch("http://localhost:3002/api/user/req/"+userId, {
+            method: "PUT",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify(recPass),
+        });
+        alert('password updated')
+        navigate("/shop");
+        }else{
+            alert('new password and check password should be same ')
+        }
+     };
     // useEffect(() => {}, []);
     return (
         <form
@@ -28,7 +45,7 @@ function PassRecovery() {
                     name: "password",
                     type: "password",
                     onChange: handleChange,
-                    placeholder: "Password",
+                    placeholder: "New Password",
                     value: { ...recPass.pass },
                 }}
             />
@@ -37,7 +54,7 @@ function PassRecovery() {
                     name: "checkPass",
                     type: "password",
                     onChange: handleChange,
-                    placeholder: "Password",
+                    placeholder: "Check Password",
                     value: { ...recPass.checkPass },
                 }}
             />

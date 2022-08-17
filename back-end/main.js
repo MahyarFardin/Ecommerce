@@ -15,31 +15,32 @@ mongoose.connect("mongodb://localhost/shop")
 .catch(ex => console.log(ex))
 
 app.use(bodyParser.urlencoded({extended:false}))
-app.use(bodyParser.json({type:'application.json'}))
+app.use(bodyParser.json({type:'application.json'})) 
 
 
 app.use((req, res, next) => {  
     res.setHeader('Access-Control-Allow-Origin', '*')
-    res.setHeader('Access-Control-Allow-Headers', '*')
-    res.setHeader('Access-Control-Allow-Methods', '*')  
- 
+    res.setHeader('Access-Control-Allow-Headers', '*') 
+    res.setHeader('Access-Control-Allow-Methods', '*')    
+
     next()    
 }) 
 
   
 const UserRouter = require('./routers/user')
 const ProductRouter = require('./routers/product')
-const addProductRouter = require('./routers/add-product')  
-const EmailRouter = require('./routers/auth')   
+const addProductRouter = require('./routers/add-product')   
+const EmailRecoveryRouter = require('./routers/auth')   
 
 
-app.use('/api/user' , UserRouter)
+// app.use('/api/user' , UserRouter)
+app.use(UserRouter)
 app.use('/api/product' , ProductRouter)
-app.use('/api/pass-recovery' , EmailRouter)  
 app.use('/api/add-product' , addProductRouter)  
+app.use('/api/pass-recovery' , EmailRecoveryRouter)  
 
 
 
 app.listen(port , ()=>{
-    console.log('listening on port'+ port );      
+    console.log('listening on port'+ port );       
 }) 

@@ -61,6 +61,9 @@ const schema = mongoose.Schema({
 })
 
 
+
 const res = mongoose.model("User" , schema)
+
+
 
 module.exports = res

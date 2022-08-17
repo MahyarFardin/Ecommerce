@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer')
 
 
-const sendEmail = async()=>{
+const sendEmail = async(option)=>{
     var transport = nodemailer.createTransport({
         host: "smtp.mailtrap.io",
         port: 2525,
@@ -13,7 +13,7 @@ const sendEmail = async()=>{
 
     const mailOption = {
         from:'nimamahini81@gmail.com',
-        to:'test@gmail.com',
+        to:option.email,
         subjecy:'test',
         text:'test',
         html:`<!DOCTYPE html>
@@ -22,6 +22,7 @@ const sendEmail = async()=>{
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="style.css">
             <title>Document</title>
         
             <style>
@@ -48,19 +49,19 @@ const sendEmail = async()=>{
             border-radius: 10px;
             cursor: pointer;
         }
+        
+        .btn a{
+            text-decoration: none;
+            color: black;
+        }
             </style>
         </head>
         <body>
                 <div class="main" >
                     <h3 class="title">click the below button to reset your password</h3>
-                    <button class="btn">click here!</button>
+                    <button class="btn"><a href="http://localhost:3000/pass-recovery">click here!</a></button>
                 </div>
-                <script>
-                    let btn = document.querySelector('.btn')
-                    btn.addEventListener('click' , ()=>{
-                        window.open('http://localhost:3000/auth')
-                    })
-                </script>
+                
         </body>
         </html>`
     }

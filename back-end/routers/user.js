@@ -2,9 +2,23 @@ const express = require('express')
 const User = require('../models/user')
 const Cryptr = require('cryptr')
 cryptr = new Cryptr('nimamleo')
+const { sendEmail } = require('../utils/email')
 const router = express.Router()
 
-router.get("/" , (req,res)=>{
+
+router.put('/api/user/req/:id' , async (req,res)=>{
+    const id = req.params.id
+    const user =await  User.findById({_id:id})
+    let encryptpPass = cryptr.encrypt(req.body.password)
+    console.log(user.pass);
+    console.log(encryptpPass);
+    user.pass = encryptpPass
+    await user.save()
+    res.send()
+})
+
+
+router.get("/api/user" , (req,res)=>{
     User.find()
     .then(users=>{
         users.forEach(user=>{
@@ -14,7 +28,7 @@ router.get("/" , (req,res)=>{
     })
 })
 
-router.get('/:id' , (req , res)=>{
+router.get('/api/user/:id' , (req , res)=>{ 
     const id = req.params.id
     User.findById({_id:id})
     .then(i=>{
@@ -23,7 +37,9 @@ router.get('/:id' , (req , res)=>{
 }) 
 
 
-router.post('/' ,(req , res)=>{
+
+
+router.post('/api/user' ,(req , res)=>{
     let userPass = req.body.pass 
     let encryptpPass = cryptr.encrypt(userPass)
     let newUser = new User({
@@ -41,7 +57,7 @@ router.post('/' ,(req , res)=>{
 }) 
 
 
-router.put('/:id' , (req,res)=>{
+router.put('/api/user/:id' , (req,res)=>{
     const id = req.params.id
     User.findByIdAndUpdate({_id:id} , {
         firstName:req.body.firstName,
@@ -56,6 +72,8 @@ router.put('/:id' , (req,res)=>{
     .then(i=>{
         res.send(i)
     })
+
+
 
 
 })

@@ -4,11 +4,18 @@ const { sendEmail } = require('../utils/email')
 const router = express.Router()
 
 
-router.get('/' , (req , res)=>{
-    res.send('nimaaaaaaaaaaa')
-    console.log(req.query.email);
-    sendEmail()
+
+router.get('/' , async (req , res)=>{
+    const email = req.query.email
+    req.email = email
+    sendEmail({email:email})
+    const user =await  User.findOne({email:email}) ;
+
+
+
+    res.send()
 })
+
 
 
 

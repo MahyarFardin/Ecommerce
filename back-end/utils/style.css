@@ -29,3 +29,9 @@
     border-radius: 10px;
     cursor: pointer;
 }
+
+
+.btn a{
+    text-decoration: none;
+    color: black;
+}
