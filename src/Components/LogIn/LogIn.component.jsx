@@ -34,7 +34,7 @@ function LogIn() {
             .then((i) => i.json())
             .then((users) => {
                 let flag = false;
-                let allUsers=users
+                let allUsers = users;
                 for (let i = 0; i < allUsers.length; i++) {
                     let user = allUsers[i];
                     if (
@@ -64,8 +64,7 @@ function LogIn() {
                 }
                 if (flag === false) {
                     alert("This information mismatch");
-                }
-                navigate("/shop");
+                } else navigate("/shop");
             });
     }
 
