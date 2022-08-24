@@ -15,19 +15,12 @@
   - Es6+ features
   <hr/>
 - Node js
-
     - Node js 
-    
     - crypter 
-    
-    - express 
-    
+    - express   
     - mongoose 
-    
     - nodemon 
-    
     - nodemailer
-    
   <hr/>
 - Monogdb
 
